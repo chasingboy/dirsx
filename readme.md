@@ -42,12 +42,45 @@ dirsx -u https://www.baidu.com -w words.txt --split
 dirsx -u https://www.baidu.com -w words.txt --bak
 ```
 
+![image](https://github.com/user-attachments/assets/735dc7f5-f60a-43b3-8d9f-fdf695139aad)
+
 指定添加后缀进行扫描
 ```bash
 dirsx -u https://www.baidu.com -w words.txt --suffix h5
 
 # https://www.baidu.com/admin
 # -> https://www.baidu.com/adminh5
+```
+
+内置一些常用字典选择, 在没有指定字典时显示该列表
+* 常见目录字典
+* dirsearch 的自带字典
+* 长度为 1-5 的字母组合
+* ... ...
+```
+~ kali$ dirsx -u http://127.0.0.1/
+
+
+    ██████╗ ██╗██████╗ ███████╗██╗  ██╗              
+    ██╔══██╗██║██╔══██╗██╔════╝╚██╗██╔╝  
+    ██║  ██║██║██████╔╝███████╗ ╚███╔╝ 
+    ██║  ██║██║██╔══██╗╚════██║ ██╔██╗ 
+    ██████╔╝██║██║  ██║███████║██╔╝ ██╗
+    ╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                       1.1.0
+                        xboy@遥遥领先
+
+[+] You have not appoint payloads, so you can select from the list: 
+[0] fuzzing-dirs-common.txt
+[1] fuzzing-dirs-dirsearch.txt
+[2] fuzzing-files-php.txt
+[3] fuzzing-letter-len1.txt
+[4] fuzzing-letter-len2.txt
+[5] fuzzing-letter-len3.txt
+[6] fuzzing-letter-len4.txt
+... ...
+[+] Select payloads with number: 1
+
 ```
 
 ### dirsx -h

@@ -126,6 +126,34 @@ Help Options:
 
 ```
 
+### 字典添加
+可在 dicts 目录下根据个人需求更新常用字典
+```
+dirsx $ tree
+.
+├── dicts
+│   ├── fuzzing-dirs-common.txt
+│   ├── fuzzing-dirs-dirsearch.txt
+│   ├── fuzzing-files-php.txt
+│   ├── fuzzing-letter-len1.txt
+│   ├── fuzzing-letter-len2.txt
+│   ├── fuzzing-letter-len3.txt
+│   ├── fuzzing-letter-len4.txt
+│   ├── fuzzing-months-1-12.txt
+│   ├── fuzzing-numbers-0-9.txt
+│   ├── fuzzing-payloads-aspx.txt
+│   ├── fuzzing-payloads-bakfile.txt
+│   ├── fuzzing-payloads-common.txt
+│   ├── fuzzing-payloads-java.txt
+│   ├── fuzzing-payloads-null.txt
+│   ├── fuzzing-payloads-php.txt
+│   ├── fuzzing-routers-common.txt
+│   ├── fuzzing-words-len1-5.txt
+│   └── fuzzing-years-1990-2024.txt
+├── dirsx
+
+```
+
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray
 

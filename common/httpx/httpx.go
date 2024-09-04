@@ -186,83 +186,9 @@ func (this *Httpx) title(code string, ctype string, body string, headers http.He
     return mathers[1]
 }
 
-
-func (this *Httpx) code_length(code string, clen string) string {
-    return S.F("{0}-{1}", code, clen)
-}
-
-
 func (this *Httpx) is_html(body string) bool {
     return (strings.Contains(body, "<html>") || strings.Contains(body, "<body>") || strings.Contains(body, "<script>"))
 }
-
-
-func (this *Httpx) check_40X_50X_Json(ctype string, body string) bool {
-    if strings.Contains(ctype, "json") == false {
-        return false
-    }
-    
-    body = strings.Split(body,"HTTP")[0]
-    body = strings.TrimSpace(strings.ToLower(body))
-    
-    var keys, status []string
-    keys, status = []string {"code","status","resultcode"}, []string {"401","404","501","502","503","504"}
-
-    viper.SetConfigType("json")
-    if err := viper.ReadConfig(strings.NewReader(body)); err != nil {
-        return false
-    }
-
-    for _, key := range keys {
-        if value := viper.Get(key); value != nil {
-
-            if slices.Contains(status, S.F("{0}",value)) {
-                return true
-            }
-        }
-    }
-
-    return false
-
-}
-
- 
-func (this *Httpx) select_and_check_30X_403_path(url string, code string, location string, body string) bool {
-    if strings.HasPrefix(code,"3") == false && code != "403" {
-        return true
-    } 
-
-    if code == "403" && strings.Contains(body, "403 Forbidden") && strings.HasSuffix(url, "/") {
-        return true
-    }
-
-    var netloc, path string
-
-    if strings.HasPrefix(location, "http") {
-        prs, _ := UrlParse.Parse(location)
-        netloc = S.F("{0}://{1}", prs.Scheme, prs.Host)
-        location = strings.TrimRight(location, "/")
-        path = prs.Path
-    
-    } else {
-        netloc = strings.TrimRight(location,"/")
-        location, path = netloc, netloc
-    }
-    
-    x1 := strings.HasPrefix(code, "3")
-    x2 := path != "/" && path != ""
-    x3 := strings.Contains(url, netloc) || (strings.HasPrefix(url,"http://") && strings.HasPrefix(netloc,"https://"))
-    x4 := !slices.Contains(this.Checks, location)
-    
-    // fmt.Println(netloc,location,x1,x2,x3,x4)
-    if x1 && x2 && x3 && x4 {
-        this.Checks = append(this.Checks, location)
-        return true
-    }
-    
-    return false
- }
-
 
 func (this *Httpx) exclude_codes(code string) bool {
     return slices.Contains(this.Excodes, code)
@@ -271,15 +197,6 @@ func (this *Httpx) exclude_codes(code string) bool {
 
 func (this *Httpx) is_in_black_title(title string) bool {
     return slices.Contains(common.BLACK_TITLE, title)
-}
-
-
-func (this *Httpx) check_html_is_similarity(body string) bool {
-    similarity1 := simHtml.GetSimFromStr(body, this.Checks[0])
-    similarity2 := simHtml.GetSimFromStr(body, this.Checks[3])
-
-    return similarity1 > 0.8 || similarity2 > 0.8
-
 }
 
 
@@ -293,38 +210,11 @@ func (this *Httpx) filter(url string, code string, clen string, title string, bo
     if this.Smart == false {
         return true
     }
-
-    // exclude 40X,50X
-    if common.StringToInt(code) > 403 && code != "500" {
-        return false
-    }
-
-    // handle code 301,403
-    if this.select_and_check_30X_403_path(url, code, location, body) == false {
-        return false
-    }
-
-    // 200 and response 400,401,501,502,503
-    if this.check_40X_50X_Json(location, body) == true {
-        return false
-    }
-
-    // filter title
-    if this.is_in_black_title(title) == true {
-        return false
-    }
-
-    // respone "code-length" in checks
-    if (code == "200" || code == "500") && slices.Contains(this.Checks, this.code_length(code, clen)) {
-        return false
-    }
-
-    if code == "200" && this.is_html(body) && this.check_html_is_similarity(body) {
-        return false
-    }
-
+    
+    // 待完善 ... ...
+    
     this.Checks = append(this.Checks, this.code_length(code, clen))
-
+    
     return true
 }
 

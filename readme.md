@@ -155,6 +155,7 @@ dirsx $ tree
 
 ### dirsx 安装
 根据对应系统类型下载执行文件 https://github.com/chasingboy/dirsx/releases
+⚠️注意事项: 源代码中删除了部分还需要完善的代码，所以请不要使用源代码编译
 
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray

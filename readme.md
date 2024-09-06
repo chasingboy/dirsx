@@ -151,8 +151,10 @@ dirsx $ tree
 │   ├── fuzzing-words-len1-5.txt
 │   └── fuzzing-years-1990-2024.txt
 ├── dirsx
-
 ```
+
+### dirsx 安装
+根据对应系统类型下载执行文件 https://github.com/chasingboy/dirsx/releases
 
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray

@@ -4,11 +4,9 @@ import (
 	"strings"
 	"strconv"
     "regexp"
-    "time"
     "io/ioutil"
     "os"
     // "fmt"
-    "math/rand"
     "path/filepath"
 
 	UrlParse "net/url"
@@ -28,13 +26,14 @@ var Logger = logger.Logger {}
 
 
 func ReadFile(filename string) [] string {
-    text, err := ioutil.ReadFile(filename)
+    _text, err := ioutil.ReadFile(filename)
     
     if err != nil {
         Logger.WAR().Msgf(S.F("the target file is not exist! => {0}", filename))
         os.Exit(0)
     }
     
+    text := ReplaceStrings(string(_text), "\n", "\r\n","\n\n","\r")
     x := strings.Split(strings.TrimSpace(string(text)), "\n")
     
     return x
@@ -50,21 +49,14 @@ func OutputResultsToFile(filename string, fileText string) {
 }
 
 
-func GetRandUserAgent() string {
-    rand.Seed(time.Now().UnixNano())
-    randnum := rand.Intn(len(USER_AGENT))
-    return USER_AGENT[randnum]
-}
-
-
 func JoinUrlAndWord(url string, word string, prefix string, suffix string, end string) string {
 	return S.F("{0}/{1}{2}{3}{4}", strings.TrimRight(url,"/"), prefix, strings.TrimLeft(word,"/"), suffix, end)
 }
 
 
-func ReplaceStrings(text string, replaces ...string) string {
-	for _, replace := range replaces {
-		text = strings.ReplaceAll(text, replace, "")
+func ReplaceStrings(text string, replace string, searchs ...string) string {
+	for _, search := range searchs {
+		text = strings.ReplaceAll(text, search, replace)
 	}
 	return text
 }
@@ -76,26 +68,12 @@ func StringToInt(str string) int {
 }
 
 
-func IsUrlValid(url string) bool {
-    if _, err := UrlParse.ParseRequestURI(url); err != nil {
-        return false
-    }
-    
-    prs, err := UrlParse.Parse(url)
-    if err != nil {
-        return false
-    }
-
-   return prs.Scheme == "http" || prs.Scheme == "https"
-}
-
-
 func RemoveExtensions(wordlist []string, removeExt string) []string {
     if removeExt == "" {
         return wordlist
     }
 
-    var wordstring = strings.Join(wordlist, "\n")
+    var wordstring string = strings.Join(wordlist, "\n")
 
     exts := strings.Split(strings.Trim(removeExt, ","), ",")
 
@@ -139,11 +117,10 @@ func SplitUrlPath(urls []string, isSplit bool) []string {
         }
 
         prs, _ := UrlParse.Parse(RemoveUrlParams(url))
-
         baseurl := S.F("{0}://{1}/", prs.Scheme, prs.Host)
-        paths := strings.Trim(filepath.Dir(prs.Path), "/")
-
-        _urls = append(_urls, []string {RemoveUrlParams(url), baseurl}...)
+        paths := strings.Trim(filepath.Dir(prs.Path), "./")
+        
+        _urls = append(_urls, []string {strings.Trim(RemoveUrlParams(url),"/")+"/", baseurl}...)
 
         if paths == "" || paths == "/" {
             continue
@@ -220,33 +197,6 @@ func GenerateBackupWords(url string, wordlist []string, isbak bool) []string {
 
     return append(wordlist, common_backup_words...)
 }
-
-
-func FormatHttpRespone(url string, code string, clen string, title string) string {
-    if strings.HasPrefix(code, "2"){
-        return Logger.RET().State("200","SUC").Str(" "+url+" ").State(clen,"WAR").Str(" ").State(title,"RET").Msg("")
-    }
-
-    return Logger.RET().State(code,"WAR").Str(" "+url+" ").State(clen,"WAR").Str(" ").State(title,"RET").Msg("")
-}
-
-
-func HandleScanResults(url string, results []map[string] string, consoleText string) (string,string) {
-    var fileText string = S.F("\n# [RET:{0}] {1}\n", len(results), url)
-    
-    for _, ret := range results {
-        url, code, clen, title := ret["url"], ret["code"], ret["clen"], ret["title"]
-        consoleText += FormatHttpRespone(url, code, clen, title) + "\n"
-        fileText += S.F("[RET] [{0}] {1}  [{2}]  [{3}]\n", code, url, clen, title)
-    }
-
-    if len(results) == 0 {
-        consoleText, fileText = Logger.WAR().Msg("Not Result Found...\n"), "# Not Result Found...\n"
-    }
-
-    return consoleText, fileText
-}
-
 
 
 func FormatDictsOptions (dictspath string) ([]string,string) {

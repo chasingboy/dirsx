@@ -1,7 +1,7 @@
 <h1 align="center">dirsx</h1>
 <h3 align="center">dirsx 是一款能够自动化过滤扫描结果的目录扫描工具</h3>
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-V1.1.0-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V1.2.1-green?style=flat">
   <img src="https://img.shields.io/github/stars/chasingboy/dirsx?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/dirsx">
   <img src="https://img.shields.io/github/downloads/chasingboy/dirsx/total?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
@@ -165,3 +165,9 @@ dirsx $ tree
 chainreactors@ https://github.com/chainreactors/spray
 
 maurosoria@ https://github.com/maurosoria/dirsearch
+
+### 更新记录
+[+] 2024-09-21 修复 --split bug、修复 302 filter bug
+
+[+] 2024-10-7 增加 cookie, header 功能、 增加 proxy 功能
+

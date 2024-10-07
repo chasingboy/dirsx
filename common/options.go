@@ -7,6 +7,7 @@ type Options struct {
     TitleLen    int    `long:"title-len" description:"set title display length" default:"30"`
     Threads     int    `short:"t" long:"threads" description:"number of threads to use" default:"20"`
     Timeout     int    `long:"timeout" description:"timeout in seconds" default:"5"`
+    
     Output      string `short:"o" long:"output" description:"file to write output results"`
 
     Prefix      string `long:"prefix" description:"add prefix of payloads"`
@@ -24,6 +25,13 @@ type Options struct {
     Method      string `short:"X" description:"method of http requests" default:"GET"`
 
     Excodes     string `short:"x" long:"excode" description:"specify the status codes that be filtered eg: 400,404" default:"400,404,406,416,501,502,503"`
+
+    Cookie      string `long:"cookie" description:"set request cookies, eg: --cookie \"session=admin\""`
+    Headers   []string `short:"H" long:"headers" description:"set request headers, string[] eg: -H \"Token: admin=true\" -H \"Cookie: login=true\""`
+    
+    HeadersFile string `long:"headers-file" description:"set request headers file, eg: --headers-file headers.txt"`
+
+    Proxy       string `long:"proxy" description:"set request proxy, eg: --proxy http://127.0.0.1:8080"`
 
     Unsmart     bool   `long:"no-smart" description:"disable smart mode (automated filtering)"`
 }

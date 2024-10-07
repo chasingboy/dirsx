@@ -23,7 +23,7 @@ var Logger = logger.Logger {}
 
 var opts common.Options
 
-var MAX_RESPONE int = 10*1024*1024
+var MAX_RESPONE int = 1024*1024
 
 // node all results
 var ALL_RESULTS strings.Builder
@@ -39,7 +39,7 @@ var banner string = fmt.Sprintf(`
                                        %s
                         xboy@遥遥领先
 
-`, "1.1.0")
+`, "1.2.1")
 
 
 var InfoFormat string = `
@@ -183,18 +183,20 @@ func GenerateTargets(url string, wordlist []string) []string {
 }
 
 
-func DirScan(urls []string, wordlist []string) {
+func DirScan(urls []string, wordlist []string, headers map[string]string) {
 
     for index, url := range urls {
 
         httpx := httpx.Httpx {
             Targets: make(chan string),
             Method: opts.Method,
+            Headers: headers,
             Timeout: opts.Timeout,
             MaxRespone: MAX_RESPONE,
             TitleLen: opts.TitleLen,
             Threads: opts.Threads,
             Excodes: strings.Split(opts.Excodes, ","),
+            Proxy: opts.Proxy,
             Smart: !opts.Unsmart,
         }
 
@@ -225,7 +227,9 @@ func ScanRunner(rootpath string) {
 
     PrintScanInfo(len(urls), wordname, opts.Threads)
 
-    DirScan(urls, wordlist)
+    headers := common.HandleHttpHeaders(opts.Cookie, opts.Headers, opts.HeadersFile)
+
+    DirScan(urls, wordlist, headers)
 
 }
 

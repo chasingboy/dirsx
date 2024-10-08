@@ -102,28 +102,33 @@ Usage:
   dirsx [OPTIONS]
 
 Application Options:
-  -u, --url=         input url of target
-  -l, --list=        input file containing list of target
-  -w, --wordlist=    appoint wordlist for scanning directory
-      --title-len=   set title display length (default: 30)
-  -t, --threads=     number of threads to use (default: 20)
-      --timeout=     timeout in seconds (default: 5)
-  -o, --output=      file to write output results
-      --prefix=      add prefix of payloads
-      --suffix=      add suffix of payloads
-  -e, --extension=   add extension eg: -e php,html
-      --remove-ext=  remove extension eg: --remove-ext php | admin.php -> admin
-      --upper-title  capitalize the first letter eg: admin -> Admin
-      --upper-all    capitalize the all letter eg: admin -> ADMIN
-      --bak          enable scanning backup file (default:false)
-      --split        enable spliting the url path, eg: /a/b -> /a/, /a/b (default: false)
-  -X=                method of http requests (default: GET)
-  -x, --excode=      specify the status codes that be filtered eg: 400,404 (default: 400,404,406,416,501,502,503)
-      --no-smart     disable smart mode (automated filtering)
+  -u, --url=          input url of target
+  -l, --list=         input file containing list of target
+  -w, --wordlist=     appoint wordlist for scanning directory
+      --title-len=    set title display length (default: 30)
+  -t, --threads=      number of threads to use (default: 20)
+      --timeout=      timeout in seconds (default: 5)
+  -o, --output=       file to write output results
+      --prefix=       add prefix of payloads
+      --suffix=       add suffix of payloads
+  -e, --extension=    add extension eg: -e php,html
+      --remove-ext=   remove extension eg: --remove-ext php | admin.php -> admin
+      --upper-title   capitalize the first letter eg: admin -> Admin
+      --upper-all     capitalize the all letter eg: admin -> ADMIN
+      --bak           enable scanning backup file (default:false)
+      --split         enable spliting the url path, eg: /a/b -> /a/, /a/b (default: false)
+  -X=                 method of http requests (default: GET)
+  -x, --excode=       specify the status codes that be filtered eg: 400,404 (default:
+                      400,404,406,416,501,502,503)
+      --cookie=       set request cookies, eg: --cookie "session=admin"
+  -H, --headers=      set request headers, string[] eg: -H "Token: admin=true" -H "Cookie:
+                      login=true"
+      --headers-file= set request headers file, eg: --headers-file headers.txt
+      --proxy=        set request proxy, eg: --proxy http://127.0.0.1:8080
+      --no-smart      disable smart mode (automated filtering)
 
 Help Options:
-  -h, --help         Show this help message
-
+  -h, --help          Show this help message
 ```
 
 ### 字典添加

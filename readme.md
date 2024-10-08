@@ -52,6 +52,18 @@ dirsx -u https://www.baidu.com -w words.txt --suffix h5
 # -> https://www.baidu.com/adminh5
 ```
 
+指定添加 cookie | headers
+```bash
+# --cookie
+dirsx -u https://www.baidu.com -w words.txt --cookie "session=admin"
+
+# --headers
+dirsx -u https://www.baidu.com -w words.txt --headers "Authorization: bearer eyJ0eX..." --headers "X-Forwarded-For: 127.0.0.1"
+
+# --headers-file
+dirsx -u https://www.baidu.com -w words.txt --headers-file headers.txt
+```
+
 内置一些常用字典选择, 在没有指定字典时显示该列表
 * 常见目录字典
 * dirsearch 的自带字典
@@ -174,5 +186,5 @@ maurosoria@ https://github.com/maurosoria/dirsearch
 ### 更新记录
 [+] 2024-09-21 修复 --split bug、修复 302 filter bug
 
-[+] 2024-10-7 增加 cookie, header 功能、 增加 proxy 功能
+[+] 2024-10-07 增加 cookie, header 功能、 增加 proxy 功能
 

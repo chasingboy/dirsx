@@ -105,7 +105,7 @@ dirsx -u https://www.baidu.com --httpx
 ### --ffuf 模式
 增加 ffuf 模式, 用法与 ffuf 工具一样, 使用 FUZZ 指定 Fuzzing 位置
 ```
-# Fuzzing 目录
+# Fuzzing dirs
 dirsx --ffuf -u http://127.0.0.1/FUZZ -w words.txt
 dirsx --ffuf -u http://127.0.0.1/FUZZ.php -w words.txt
 dirsx --ffuf -u http://127.0.0.1/FUZZ/index.php -w words.txt

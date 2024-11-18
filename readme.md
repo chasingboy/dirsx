@@ -200,6 +200,8 @@ dirsx $ tree
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray
 
+ffuf@https://github.com/ffuf/ffuf
+
 maurosoria@ https://github.com/maurosoria/dirsearch
 
 ### 更新记录

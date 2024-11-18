@@ -200,9 +200,9 @@ dirsx $ tree
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray
 
-ffuf@https://github.com/ffuf/ffuf
-
 maurosoria@ https://github.com/maurosoria/dirsearch
+
+ffuf@https://github.com/ffuf/ffuf
 
 ### 更新记录
 [+] 2024-09-21 修复 --split bug、修复 302 filter bug

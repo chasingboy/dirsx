@@ -95,6 +95,25 @@ dirsx -u https://www.baidu.com -w words.txt --headers-file headers.txt
 
 ```
 
+### --httpx 模式
+增加 httpx 模式, 可以在没有 httpx 工具的情况下用来探测 WEB 服务
+```
+dirsx -u https://www.baidu.com --httpx
+```
+<img width="1316" alt="image" src="https://github.com/user-attachments/assets/7937dba4-5f64-4f2a-a254-07c49437f85c">
+
+### --ffuf 模式
+增加 ffuf 模式, 用法与 ffuf 工具一样
+```
+# Fuzzing 目录
+dirsx --ffuf -u http://127.0.0.1/FUZZ
+dirsx --ffuf -u http://127.0.0.1/FUZZ.php
+dirsx --ffuf -u http://127.0.0.1/FUZZ/index.php
+
+# Fuzzing headers
+dirsx --ffuf -u http://127.0.0.1/ -H "x-forwarded-for: FUZZ"
+```
+
 ### dirsx -h
 
 ```bash
@@ -191,4 +210,10 @@ maurosoria@ https://github.com/maurosoria/dirsearch
 [+] 2024-09-27 修复 302 filter 错误
 
 [+] 2024-10-11 修复 tls handshake failure, basic 页面对比错误
+
+[+] 2024-11-03 修复 title 特殊字符导致格式问题、Redirect 二次判断问题
+
+[+] 2024-11-15 增加 --httpx, --ffuf 模式
+
+[+] 2024-11-18 修复发生异常时，-o 没有输出结果的问题 #4
 

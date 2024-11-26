@@ -195,7 +195,7 @@ dirsx $ tree
 > ⚠️注意: 源代码中删除了部分还需要完善的代码，所以请不要使用源代码编译
 
 
-> window 10 终端颜色显示问题, 可以更换系统终端为window terminal 解决此问题 `https://github.com/microsoft/terminal`
+> window 10 终端颜色显示问题, 可以更换系统终端为 window terminal 解决此问题 `https://github.com/microsoft/terminal`
 
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray

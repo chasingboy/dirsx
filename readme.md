@@ -219,3 +219,10 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2024-11-18 修复发生异常时，-o 没有输出结果的问题 #4
 
+[+] 2024-12-17 修复 map error: concurrent map read and map write
+
+[+] 2024-12-17 修改扫描结果实时打印, 增加进度条设置是否显示
+
+[+] 2024-12-19 增加 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt
+
+[+] 2024-12-20 修复 --no-smart 模式 30X 跳转丢包问题

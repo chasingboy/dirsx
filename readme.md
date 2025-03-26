@@ -100,7 +100,7 @@ dirsx -u https://www.baidu.com -w words.txt --headers-file headers.txt
 ```
 dirsx -u https://www.baidu.com --httpx
 ```
-<img width="1316" alt="image" src="https://github.com/user-attachments/assets/7937dba4-5f64-4f2a-a254-07c49437f85c">
+<img width="1316" alt="image" src="https://github.com/chasingboy/dirsx/blob/main/assets/httpx.png">
 
 ### --ffuf 模式
 增加 ffuf 模式, 用法与 ffuf 工具一样, 使用 FUZZ 指定 Fuzzing 位置

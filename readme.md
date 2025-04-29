@@ -221,6 +221,8 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2024-12-17 修复 map error: concurrent map read and map write
 
+[+] 2025-04-20 重构部分代码，修复 ffuf 模式 bug
+
 [+] 2024-12-17 修改扫描结果实时打印, 增加进度条设置是否显示
 
 [+] 2024-12-19 增加 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt

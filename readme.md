@@ -197,6 +197,11 @@ dirsx $ tree
 
 > window 10 终端颜色显示问题, 可以更换系统终端为 window terminal 解决此问题 `https://github.com/microsoft/terminal`
 
+### 公众号
+该公众号用于编写 Xtools 系列工具使用文档和工具更新通知
+
+<p align="center"><img width="300" alt="image" src="https://github.com/chasingboy/appsx/blob/main/assets/xsec.png"></p>
+
 ### 特别感谢
 chainreactors@ https://github.com/chainreactors/spray
 

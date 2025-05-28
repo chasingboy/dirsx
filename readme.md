@@ -228,6 +228,8 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2024-12-17 修改扫描结果实时打印, 增加进度条设置是否显示
 
+[+] 2025-05-28 增加输出 json 格式结果
+
 [+] 2024-12-19 增加 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt
 
 [+] 2024-12-20 修复 --no-smart 模式 30X 跳转丢包问题

@@ -1,7 +1,7 @@
 <h1 align="center">dirsx</h1>
 <h3 align="center">dirsx 是一款能够自动化过滤扫描结果的目录扫描工具</h3>
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-V1.6.2-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V1.7.2-green?style=flat">
   <img src="https://img.shields.io/github/stars/chasingboy/dirsx?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/dirsx">
   <img src="https://img.shields.io/github/downloads/chasingboy/dirsx/total?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
@@ -16,20 +16,21 @@
 平时使用过 dirsearch｜dirmap 等一些目录扫描工具，针对如今的 WEB 多样化，对扫描结果的过滤总感觉与预期不符合。因此下定决心造个轮子，就这样有了 dirsx。当时是使用 python 写的，但是可移植性不是很好。所以使用 golang 进行重构，顺便学习一下 golang。
 
 ### 功能
-> 大部分功能其他工具都有, 只是根据个人习惯更改
-* 使用 html 相似度对结果进行过滤
-* 对 301、302、403 状态进行二次判断
-* 对 json 返回结果进行判断
-* 字典第一个字母大写｜全部字母大写｜添加前后缀
-* 返回页面 title, 如无 title 返回内容前面 30 个字符串 (默认｜设置)
-* 自动过滤模式, 默认开启 (开启｜关闭)
+> 大部分功能其他工具都有, 只是根据个人习惯更改</br>
+
+✅ 使用 html 相似度对结果进行过滤</br>
+✅ 对 301、302、403 状态进行二次判断</br>
+✅ 对 json 返回结果进行判断</br>
+✅ 字典第一个字母大写｜全部字母大写｜添加前后缀</br>
+✅ 返回页面 title, 如无 title 返回内容前面 30 个字符串 (默认｜设置)</br>
+✅ 自动过滤模式, 默认开启 (开启｜关闭)</br>
 
 ### 基本使用
-指定字典进行扫描
+🏷️ 指定字典进行扫描
 ```bash
 dirsx -u https://www.baidu.com -w words.txt
 ```
-指定目录递归扫描, 目前暂无添加结果递归功能扫描，担心目录误报
+🏷️ 指定目录递归扫描, 目前暂无添加结果递归功能扫描，担心目录误报
 ```bash
 dirsx -u https://www.baidu.com -w words.txt --split
 
@@ -37,14 +38,14 @@ dirsx -u https://www.baidu.com -w words.txt --split
 # -> https://www.baidu.com/a/
 # -> https://www.baidu.com/a/b/
 ```
-指定备份文件进行扫描
+🏷️ 指定备份文件进行扫描
 ```bash
 dirsx -u https://www.baidu.com -w words.txt --bak
 ```
 
 ![image](https://github.com/user-attachments/assets/735dc7f5-f60a-43b3-8d9f-fdf695139aad)
 
-指定添加后缀进行扫描
+🏷️ 指定添加后缀进行扫描
 ```bash
 dirsx -u https://www.baidu.com -w words.txt --suffix h5
 
@@ -52,7 +53,7 @@ dirsx -u https://www.baidu.com -w words.txt --suffix h5
 # -> https://www.baidu.com/adminh5
 ```
 
-指定添加 cookie | headers
+🏷️ 指定添加 cookie | headers
 ```bash
 # --cookie
 dirsx -u https://www.baidu.com -w words.txt --cookie "session=admin"
@@ -64,7 +65,7 @@ dirsx -u https://www.baidu.com -w words.txt --headers "Authorization: bearer eyJ
 dirsx -u https://www.baidu.com -w words.txt --headers-file headers.txt
 ```
 
-内置一些常用字典选择, 在没有指定字典时显示该列表
+🏷️ 内置一些常用字典选择, 在没有指定字典时显示该列表
 * 常见目录字典
 * dirsearch 的自带字典
 * 长度为 1-5 的字母组合
@@ -210,9 +211,9 @@ maurosoria@ https://github.com/maurosoria/dirsearch
 ffuf@ https://github.com/ffuf/ffuf
 
 ### 更新记录
-[+] 2024-09-21 修复 --split bug、修复 302 filter bug
+[+] 2024-09-21 修复 --split bug｜ 302 filter bug
 
-[+] 2024-10-07 增加 cookie, header 功能、 增加 proxy 功能
+[+] 2024-10-07 增加 cookie｜header｜proxy 功能
 
 [+] 2024-09-27 修复 302 filter 错误
 
@@ -220,18 +221,20 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2024-11-03 修复 title 特殊字符导致格式问题、Redirect 二次判断问题
 
-[+] 2024-11-15 增加 --httpx, --ffuf 模式
+[+] 2024-11-15 增加 --httpx｜--ffuf 模式
 
-[+] 2024-11-18 修复发生异常时，-o 没有输出结果的问题 #4
+[+] 2024-11-18 修复发生异常时 -o 没有输出结果的问题 #4
 
 [+] 2024-12-17 修复 map error: concurrent map read and map write
 
 [+] 2024-12-17 修改扫描结果实时打印, 增加进度条设置是否显示
 
-[+] 2025-05-28 增加输出 json 格式结果
-
 [+] 2024-12-19 增加 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt
 
 [+] 2024-12-20 修复 --no-smart 模式 30X 跳转丢包问题
 
-[+] 2025-04-20 重构部分代码，修复 ffuf 模式 bug，修改字典目录 wordlist
+[+] 2025-04-20 修复 ffuf 模式 bug｜修改字典目录 wordlist｜重构部分代码
+
+[+] 2025-05-28 增加 json 格式结果输出功能
+
+[+] 2025-08-06 修复 URL 格式处理和 http 连接错误 bug

@@ -1,7 +1,7 @@
 <h1 align="center">dirsx</h1>
 <h3 align="center">dirsx 是一款能够自动化过滤扫描结果的目录扫描工具</h3>
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-V1.7.2-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V1.7.8-green?style=flat">
   <img src="https://img.shields.io/github/stars/chasingboy/dirsx?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/dirsx">
   <img src="https://img.shields.io/github/downloads/chasingboy/dirsx/total?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
@@ -213,7 +213,7 @@ ffuf@ https://github.com/ffuf/ffuf
 ### 更新记录
 [+] 2024-09-21 修复 --split bug｜ 302 filter bug
 
-[+] 2024-10-07 增加 cookie｜header｜proxy 功能
+[+] 2024-10-07 新增 cookie｜header｜proxy 功能
 
 [+] 2024-09-27 修复 302 filter 错误
 
@@ -221,20 +221,26 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2024-11-03 修复 title 特殊字符导致格式问题、Redirect 二次判断问题
 
-[+] 2024-11-15 增加 --httpx｜--ffuf 模式
+[+] 2024-11-15 新增 --httpx｜--ffuf 模式
 
-[+] 2024-11-18 修复发生异常时 -o 没有输出结果的问题 #4
+[+] 2024-11-18 修复 发生异常时 -o 没有输出结果的问题 #4
 
 [+] 2024-12-17 修复 map error: concurrent map read and map write
 
-[+] 2024-12-17 修改扫描结果实时打印, 增加进度条设置是否显示
+[+] 2024-12-17 修改 扫描结果实时打印, 增加进度条设置是否显示
 
-[+] 2024-12-19 增加 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt
+[+] 2024-12-19 新增 @tony 师傅整理字典 fuzzing-payloads-vulnerability.txt
 
 [+] 2024-12-20 修复 --no-smart 模式 30X 跳转丢包问题
 
 [+] 2025-04-20 修复 ffuf 模式 bug｜修改字典目录 wordlist｜重构部分代码
 
-[+] 2025-05-28 增加 json 格式结果输出功能
+[+] 2025-05-28 新增 json 格式结果输出功能
 
 [+] 2025-08-06 修复 URL 格式处理和 http 连接错误 bug
+
+[+] 2025-09-25 修复 --ffuf 模式显示 payload 问题
+
+[+] 2025-09-25 新增 支持目标扫描过程中保存结果｜Ctrl+C 中断且保存结果
+
+[+] 2025-09-25 新增 --word-first 模式

@@ -1,7 +1,7 @@
 <h1 align="center">dirsx</h1>
 <h3 align="center">dirsx 是一款能够自动化过滤扫描结果的目录扫描工具</h3>
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-V1.7.8-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V1.8.0-green?style=flat">
   <img src="https://img.shields.io/github/stars/chasingboy/dirsx?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/dirsx">
   <img src="https://img.shields.io/github/downloads/chasingboy/dirsx/total?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">

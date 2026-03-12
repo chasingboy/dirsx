@@ -24,6 +24,8 @@
 ✅ 支持字典第一个字母大写｜全部字母大写｜添加前后缀</br>
 ✅ 支持返回页面 title, 如无 title 返回内容前面 30 个字符串 (默认｜设置)</br>
 ✅ 支持自动过滤模式, 默认开启 (开启｜关闭)</br>
+✅ 支持 httpx 工具探测 URL 存活</br>
+✅ 支持 ffuf 工具部分 FUZZ 功能</br>
 
 ### 基本使用
 🏷️ 指定字典进行扫描
@@ -127,37 +129,56 @@ dirsx --ffuf -u http://127.0.0.1/ -H "x-forwarded-for: FUZZ"
     ██║  ██║██║██╔══██╗╚════██║ ██╔██╗ 
     ██████╔╝██║██║  ██║███████║██╔╝ ██╗
     ╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-                                       1.1.0
+                                       1.8.2
                         xboy@遥遥领先
-
 Usage:
   dirsx [OPTIONS]
 
-Application Options:
-  -u, --url=          input url of target
-  -l, --list=         input file containing list of target
+Common Options:
+  -u, --url=          input target url to scan
+  -l, --list=         input file containing list of target urls
   -w, --wordlist=     appoint wordlist for scanning directory
       --title-len=    set title display length (default: 30)
   -t, --threads=      number of threads to use (default: 20)
       --timeout=      timeout in seconds (default: 5)
   -o, --output=       file to write output results
+      --json          output results in json format
+  -X=                 method of http requests (default: GET)
+      --cookie=       set request cookies eg: --cookie "session=admin"
+  -H, --headers=      set request headers string[] eg: -H "Token: admin=true" -H "Cookie:
+                      login=true"
+      --headers-file= set request headers file eg: --headers-file headers.txt
+      --is-redirect   follow http redirects (default: false)
+      --proxy=        set request proxy eg: --proxy http://127.0.0.1:8080
+      --split         enable spliting the url path eg: /a/b -> /a/, /a/b (default: false)
+      --no-smart      disable smart mode (automated filtering)
+      --no-show-bar   disable show progress bar
+      --word-first    prioritize words over urls when scanning
+
+Response Options:
+  -c, --code=         match response with specified status code eg: 200,302
+  -x, --excode=       exclude response with specified status code eg: 400,404 (default:
+                      400,401,404,406,416,501,502,503)
+  -s, --string=       match response with specified string
+      --exstring=     exclude response with specified string
+
+Payloads Options:
+      --upper-title   capitalize the first letter eg: admin -> Admin
+      --upper-all     capitalize the all letter eg: admin -> ADMIN
       --prefix=       add prefix of payloads
       --suffix=       add suffix of payloads
   -e, --extension=    add extension eg: -e php,html
       --remove-ext=   remove extension eg: --remove-ext php | admin.php -> admin
-      --upper-title   capitalize the first letter eg: admin -> Admin
-      --upper-all     capitalize the all letter eg: admin -> ADMIN
       --bak           enable scanning backup file (default:false)
-      --split         enable spliting the url path, eg: /a/b -> /a/, /a/b (default: false)
-  -X=                 method of http requests (default: GET)
-  -x, --excode=       specify the status codes that be filtered eg: 400,404 (default:
-                      400,404,406,416,501,502,503)
-      --cookie=       set request cookies, eg: --cookie "session=admin"
-  -H, --headers=      set request headers, string[] eg: -H "Token: admin=true" -H "Cookie:
-                      login=true"
-      --headers-file= set request headers file, eg: --headers-file headers.txt
-      --proxy=        set request proxy, eg: --proxy http://127.0.0.1:8080
-      --no-smart      disable smart mode (automated filtering)
+
+Fuzzing Options:
+      --ffuf          ffuf mode - fuzzing target like ffuf tool eg: http://127.0.0.1/FUZZ.php
+
+Httpx Options:
+      --httpx         httpx mode - probe url like httpx tool
+      --protocol=     probe with protocol scheme specified in input (http|https) eg: --protocol
+                      https (default: all)
+      --path=         path or list of paths to probe (comma-separated, file)
 
 Help Options:
   -h, --help          Show this help message
@@ -243,6 +264,12 @@ ffuf@ https://github.com/ffuf/ffuf
 
 [+] 2025-09-25【新增】支持目标扫描过程中保存结果｜Ctrl+C 中断且保存结果
 
-[+] 2025-09-25【新增】--word-first 模式
+[+] 2025-09-25【新增】字典优先模式 --word-first
 
-[+] 2025-11-18【修复】-x 参数问题
+[+] 2025-11-18【修复】参数 -x 过滤问题
+
+[+] 2026-03-10 【新增】支持自定义是否重定向跳转 --is-redirect
+
+[+] 2026-03-10 【新增】支持自定义字符串选择和过滤 --string｜--exstring
+
+[+] 2026-03-10 【新增】支持状态码选择和过滤 --code｜--excode
